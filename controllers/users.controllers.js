@@ -4,7 +4,11 @@ const mailer = require("../config/mailer.config");
 
 
 module.exports.create = (req, res, next) => {
-    const data = { name, email, password, bio } = req.body
+    const data = { name, email, password, bio, avatar } = req.body
+
+    if(req.file){
+      data.avatar = req.file.path;
+    }
 
     User.create({
       ...data    

@@ -32,14 +32,12 @@ const UserSchema = new Schema ({
     },
     active: {
         type: Boolean,
-        default: false,
+        default: true,
     },
-    createdAt:{
-        type: Date
-    },
-    updatedAt: {
-        type: Date
-    },
+    avatar: {
+        type: String,
+        required: 'avatar is required'
+    }
 },
 {
     timestamps: true,
