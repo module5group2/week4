@@ -11,21 +11,21 @@ function validateEmail(email) {
     return re.test(email)
 };
 
-const UserSchema = new Schema ({
+const UserSchema = new Schema({
     name: {
         type: String,
         required: true
     },
-    email:{
+    email: {
         type: String,
         required: true,
-        validate: [validateEmail, 'Please fill a valid email address'],
+        validate: [validateEmail, 'Please fill it up with a valid email address'],
         match: /^.+@(?:[\w-]+\.)+\w+$/,
     },
     password: {
         type: String,
         required: true,
-        match: [PASSWORD_PATTERN, 'the password is invalid']
+        match: [PASSWORD_PATTERN, 'The password is invalid']
     },
     bio: {
         type: String,
@@ -36,58 +36,56 @@ const UserSchema = new Schema ({
     },
     avatar: {
         type: String,
-        required: 'avatar is required'
+        required: 'Avatar is required'
     }
 },
-{
-    timestamps: true,
-    toJSON: {
-        transform: (doc, ret) => {
-            ret.id = doc._id;
-            delete ret._id;
-            delete ret.__v;
-            delete ret.password;
-        
-            return ret
-        }
-    },
-    toObject: {
-        transform: (doc, ret) => {
-            ret.id = doc._id;
-            delete ret._id;
-            delete ret.__v;
-            delete ret.password;
-            return ret
-        }
-    }
-});
+    {
+        timestamps: true,
+        toJSON: {
+            transform: (doc, ret) => {
+                ret.id = doc._id;
+                delete ret._id;
+                delete ret.__v;
+                delete ret.password;
 
-UserSchema.pre('save', function(next){
+                return ret
+            }
+        },
+        toObject: {
+            transform: (doc, ret) => {
+                ret.id = doc._id;
+                delete ret._id;
+                delete ret.__v;
+                delete ret.password;
+                return ret
+            }
+        }
+    });
+
+UserSchema.pre('save', function (next) {
     now = new Date();
     this.updatedAt = now;
-    if(!this.createdAt){
+    if (!this.createdAt) {
         this.createdAt = now;
     }
-    console.log('Antes')
-    console.log(this.isModified('password'))
+
     if (this.isModified('password')) {
         bcrypt.hash(this.password, saltRounds).then((hash) => {
-            console.log(`hash ${hash}`)
+
             this.password = hash;
-            console.log(`this.password ${this.password}`)
+
             next();
         });
-    } else{
+    } else {
         next();
     }
-    
+
 });
 
 UserSchema.methods.checkPassword = async function (passwordToCheck) {
-    console.log(`passwordToCheck ${passwordToCheck}...`)
-    console.log(`password ${this.password}...`)
+
     return await bcrypt.compare(passwordToCheck, this.password);
-  };
+};
 
 
 

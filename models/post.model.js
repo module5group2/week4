@@ -2,13 +2,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const PostSchema = new Schema ({
+const PostSchema = new Schema({
     id: {
-        type: Schema.ObjectId, 
-        default: function () { return new ObjectId()},
+        type: Schema.ObjectId,
+        default: function () { return new ObjectId() },
         auto: true
     },
-    createdAt:{
+    createdAt: {
         type: Date
     },
     updatedAt: {
@@ -31,12 +31,22 @@ const PostSchema = new Schema ({
         required: true,
         trim: true,
     },
+}, {
+    toJSON: {
+        transform: (doc, ret) => {
+            ret.id = doc._id;
+            delete ret._id;
+            delete ret.__v;
+
+            return ret
+        }
+    }
 });
 
-PostSchema.pre('save', function(next){
+PostSchema.pre('save', function (next) {
     now = new Date();
     this.updatedAt = now;
-    if(!this.createdAt){
+    if (!this.createdAt) {
         this.createdAt = now;
     }
     next();

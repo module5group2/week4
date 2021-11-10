@@ -4,33 +4,32 @@ const createError = require('http-errors');
 const express = require('express');
 const mongoose = require('mongoose');
 const logger = require('morgan');
-const session = require('./config/session.config');
+// const session = require('./config/session.config');  Metodo Cookie........
 const auth = require('./middleware/auth.middleware');
 
 
 const app = express()
-const port = 8000
+const port = process.env.PORT
 
 require('./config/db.config');
 app.use(logger("dev"));
 app.use(express.json());
-app.use(session);
+// app.use(session);  Metodo Cookie........
 
 app.use(auth.loadUser);
-//app.use(auth.isAuthenticated);
 
 const routes = require('./config/routes.config');
 app.use('/api', routes);
 
 app.use((req, res, next) => {
-  next(createError(404, 'Route not found'))
+  next(createError(404, 'Route Not Found'))
 })
 
 app.use((error, req, res, next) => {
   if (error instanceof mongoose.Error.ValidationError) {
     error = createError(400, error);
   } else if (error instanceof mongoose.Error.CastError && error.message.includes('_id')) {
-    error = createError(404, 'Resource not found');
+    error = createError(404, 'Resource Not Found');
   } else if (!error.status) {
     error = createError(500, error);
   }
@@ -53,7 +52,7 @@ app.use((error, req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log(`Posts app listening at http://localhost:${port}`)
+  console.log(`PosterApp listening at http://localhost:${port}`)
 })
 
 module.exports = app;
