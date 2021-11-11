@@ -1,17 +1,20 @@
 {
+	"variables": [],
 	"info": {
-		"_postman_id": "12f603df-3148-46eb-b8cf-ba0e4275d7ce",
 		"name": "Posts",
-		"description": "Module 5 - Week 2 - Posts\nAuthor: Sonia Rojas",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "30b0c7f8-bb4f-c281-71b0-2b31b6daff59",
+		"description": "Module 5 - Week 4 - Posts\nAuthors:\n\tOriel Chaverra\n\tDanny Barrantes\n\tFredy Zurita\n\tSonia Rojas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "User",
+			"description": "",
 			"item": [
 				{
 					"name": "create user",
 					"request": {
+						"url": "http://localhost:8000/api/users",
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -19,12 +22,12 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Arturo díaz",
+									"value": "Luis Lopez",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "butan.clan.123@hotmail.com",
+									"value": "llopez@hotmail.com",
 									"type": "text"
 								},
 								{
@@ -40,85 +43,51 @@
 								{
 									"key": "avatar",
 									"type": "file",
-									"src": "/C:/Users/butan/OneDrive/Escritorio/Master/Arquitectura de servidores/Actividad 4/create-your-cartoon-style-flat-avatar-or-icon.jpg"
+									"src": "Selección_021.png"
+								},
+								{
+									"key": "",
+									"value": "",
+									"description": "",
+									"type": "text"
 								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/api/users",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"users"
 							]
-						}
+						},
+						"description": ""
 					},
 					"response": []
 				},
 				{
 					"name": "login",
 					"request": {
+						"url": "http://localhost:8000/api/login",
 						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
 							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"llopez@hotmail.com\",\n\t\"password\":\"abcd1234\"\n}"
 						},
-						"url": {
-							"raw": "http://localhost:8000/api/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"login"
-							]
-						}
+						"description": ""
 					},
 					"response": []
 				},
 				{
 					"name": "logout",
 					"request": {
+						"url": "http://localhost:8000/api/logout",
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": ""
 						},
-						"url": {
-							"raw": "http://localhost:8000/api/logout",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"logout"
-							]
-						}
+						"description": ""
 					},
 					"response": []
 				}
@@ -127,28 +96,23 @@
 		{
 			"name": "http://localhost:8000/api/posts",
 			"request": {
+				"url": "http://localhost:8000/api/posts",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json"
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MThjN2VkZmVhZDIwNzM3N2E4ZDNjMWMiLCJleHAiOjE2MzY2MDEyMzAsImlhdCI6MTYzNjU5NzYzMH0.gi5bhYpZHNDqBpqgeQaMw8oGtohfEqEUY78Mjc_NyG0",
+						"description": ""
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"title\":\"Post 2\",\n\t\"text\":\"Post 2\",\n\t\"author\":\"Leslie Rojas\"\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8000/api/posts",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"posts"
-					]
+					"raw": "{\n\t\"title\":\"Post 3\",\n\t\"text\":\"Post 3\",\n\t\"author\":\"Luis López\"\n}"
 				},
 				"description": "Create post"
 			},
@@ -157,21 +121,16 @@
 		{
 			"name": "http://localhost:8000/api/posts/:id",
 			"request": {
+				"url": "http://localhost:8000/api/posts/618c7fc7ead207377a8d3c21",
 				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8000/api/posts/61762612076e42679436e657",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"posts",
-						"61762612076e42679436e657"
-					]
-				},
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MThjN2VkZmVhZDIwNzM3N2E4ZDNjMWMiLCJleHAiOjE2MzY2MDEyMzAsImlhdCI6MTYzNjU5NzYzMH0.gi5bhYpZHNDqBpqgeQaMw8oGtohfEqEUY78Mjc_NyG0",
+						"description": ""
+					}
+				],
+				"body": {},
 				"description": "Get Post by id"
 			},
 			"response": []
@@ -179,20 +138,16 @@
 		{
 			"name": "http://localhost:8000/api/posts",
 			"request": {
+				"url": "http://localhost:8000/api/posts",
 				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8000/api/posts",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"posts"
-					]
-				},
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MThjN2VkZmVhZDIwNzM3N2E4ZDNjMWMiLCJleHAiOjE2MzY2MDEyMzAsImlhdCI6MTYzNjU5NzYzMH0.gi5bhYpZHNDqBpqgeQaMw8oGtohfEqEUY78Mjc_NyG0",
+						"description": ""
+					}
+				],
+				"body": {},
 				"description": "Get all posts"
 			},
 			"response": []
@@ -200,6 +155,7 @@
 		{
 			"name": "http://localhost:8000/api/posts",
 			"request": {
+				"url": "http://localhost:8000/api/posts/61762fcab8007f1d57776992",
 				"method": "PATCH",
 				"header": [
 					{
@@ -211,19 +167,6 @@
 					"mode": "raw",
 					"raw": "{\n\t\"text\":\"Text: Post 2...\"\n}"
 				},
-				"url": {
-					"raw": "http://localhost:8000/api/posts/61762fcab8007f1d57776992",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"posts",
-						"61762fcab8007f1d57776992"
-					]
-				},
 				"description": "Update Post"
 			},
 			"response": []
@@ -231,25 +174,10 @@
 		{
 			"name": "http://localhost:8000/api/posts/:id",
 			"request": {
+				"url": "http://localhost:8000/api/posts/61777eabf9d34d938d4ff983",
 				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "http://localhost:8000/api/posts/61777eabf9d34d938d4ff983",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"posts",
-						"61777eabf9d34d938d4ff983"
-					]
-				},
+				"body": {},
 				"description": "Delete post"
 			},
 			"response": []
