@@ -1,8 +1,0 @@
-{
-    "env": {
-        "HOST":"http://localhost",
-        "PORT":"8000",
-        "EMAIL_ACCOUNT":"mod5.grp2.threepoints@gmail.com",
-        "EMAIL_PASSWORD":"Mod5Grp2@2021"
-    }
-  }
