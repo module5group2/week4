@@ -14,7 +14,7 @@
 				{
 					"name": "create user",
 					"request": {
-						"url": "http://localhost:8000/api/users",
+						"url": "https://actividad4-grupo2.herokuapp.com/api/users",
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -60,7 +60,7 @@
 				{
 					"name": "login",
 					"request": {
-						"url": "http://localhost:8000/api/login",
+						"url": "https://actividad4-grupo2.herokuapp.com/api/login",
 						"method": "POST",
 						"header": [
 							{
@@ -80,7 +80,7 @@
 				{
 					"name": "logout",
 					"request": {
-						"url": "http://localhost:8000/api/logout",
+						"url": "https://actividad4-grupo2.herokuapp.com/api/logout",
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -94,9 +94,9 @@
 			]
 		},
 		{
-			"name": "http://localhost:8000/api/posts",
+			"name": "https://actividad4-grupo2.herokuapp.com/api/posts",
 			"request": {
-				"url": "http://localhost:8000/api/posts",
+				"url": "https://actividad4-grupo2.herokuapp.com/api/posts",
 				"method": "POST",
 				"header": [
 					{
@@ -119,9 +119,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/posts/:id",
+			"name": "https://actividad4-grupo2.herokuapp.com/api/posts/:id",
 			"request": {
-				"url": "http://localhost:8000/api/posts/618c7fc7ead207377a8d3c21",
+				"url": "https://actividad4-grupo2.herokuapp.com/api/posts/618c7fc7ead207377a8d3c21",
 				"method": "GET",
 				"header": [
 					{
@@ -136,9 +136,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/posts",
+			"name": "https://actividad4-grupo2.herokuapp.com/api/posts",
 			"request": {
-				"url": "http://localhost:8000/api/posts",
+				"url": "https://actividad4-grupo2.herokuapp.com/api/posts",
 				"method": "GET",
 				"header": [
 					{
@@ -153,9 +153,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/posts",
+			"name": "https://actividad4-grupo2.herokuapp.com/api/posts",
 			"request": {
-				"url": "http://localhost:8000/api/posts/61762fcab8007f1d57776992",
+				"url": "https://actividad4-grupo2.herokuapp.com/api/posts/61762fcab8007f1d57776992",
 				"method": "PATCH",
 				"header": [
 					{
@@ -172,9 +172,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/posts/:id",
+			"name": "https://actividad4-grupo2.herokuapp.com/api/posts/:id",
 			"request": {
-				"url": "http://localhost:8000/api/posts/61777eabf9d34d938d4ff983",
+				"url": "https://actividad4-grupo2.herokuapp.com/api/posts/61777eabf9d34d938d4ff983",
 				"method": "DELETE",
 				"header": [],
 				"body": {},
